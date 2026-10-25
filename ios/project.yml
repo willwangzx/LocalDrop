@@ -1,0 +1,17 @@
+name: LocalDrop
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: '17.0'
+targets:
+  LocalDrop:
+    type: application
+    platform: iOS
+    sources: [LocalDrop]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.LocalDrop
+        SWIFT_VERSION: '5.0'
+        TARGETED_DEVICE_FAMILY: '1,2'
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: LocalDrop/Info.plist

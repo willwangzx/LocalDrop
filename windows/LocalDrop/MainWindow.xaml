@@ -1,0 +1,13 @@
+<Window x:Class="LocalDrop.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="LocalDrop" Width="780" Height="680" MinWidth="600" MinHeight="550" Background="#101827" Foreground="#EDF3FF">
+ <Window.Resources>
+  <Style TargetType="Button"><Setter Property="Padding" Value="16,10"/><Setter Property="Margin" Value="0,0,10,0"/><Setter Property="Background" Value="#8DE4CC"/><Setter Property="Foreground" Value="#101827"/></Style>
+  <Style TargetType="TextBox"><Setter Property="Padding" Value="10"/><Setter Property="Margin" Value="0,6,0,12"/></Style>
+ </Window.Resources>
+ <Grid Margin="28"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <StackPanel><TextBlock Text="LocalDrop" FontSize="32" FontWeight="Bold"/><TextBlock Text="Your files. Across devices. On your network." Margin="0,6,0,24" Foreground="#B6C5DA"/></StackPanel>
+  <StackPanel Grid.Row="1"><TextBlock Text="1. Connect iPhone and Windows to the same trusted network" FontSize="16"/><TextBlock Text="Enter one of these addresses in the iPhone app:" Margin="0,12,0,0"/><TextBox x:Name="AddressBox" IsReadOnly="True" TextWrapping="Wrap"/><TextBlock Text="Pairing secret (changes each time this app starts)"/><TextBox x:Name="SecretBox" IsReadOnly="True"/><TextBlock Text="Local traffic is not encrypted in this prototype. Use a trusted private network." Foreground="#F0CE91" TextWrapping="Wrap" Margin="0,0,0,20"/></StackPanel>
+  <StackPanel Grid.Row="2"><TextBlock Text="2. Share files with your iPhone" FontSize="16" Margin="0,0,0,12"/><StackPanel Orientation="Horizontal"><Button Content="Add files…" Click="AddFiles"/><Button Content="Stop sharing selected" Click="RemoveFiles"/></StackPanel></StackPanel>
+  <ListBox Grid.Row="3" x:Name="FilesList" Margin="0,16,0,16" Background="#1B293E" Foreground="#EDF3FF" DisplayMemberPath="Name" SelectionMode="Extended"/>
+  <StackPanel Grid.Row="4"><Button Content="Open received files" Click="OpenReceived" HorizontalAlignment="Left"/><TextBlock x:Name="StatusText" Text="Starting local service…" Margin="0,14,0,0" TextWrapping="Wrap" Foreground="#B6C5DA"/></StackPanel>
+ </Grid>
+</Window>

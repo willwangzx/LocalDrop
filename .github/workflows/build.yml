@@ -1,0 +1,19 @@
+name: Native builds
+on: [push, pull_request]
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet run --project tests/ProtocolTests.csproj
+      - run: dotnet build windows/LocalDrop/LocalDrop.csproj -c Release
+  ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen
+      - run: xcodegen generate --spec ios/project.yml
+      - run: xcodebuild -project ios/LocalDrop.xcodeproj -scheme LocalDrop -sdk iphonesimulator -configuration Debug CODE_SIGNING_ALLOWED=NO build
